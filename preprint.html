@@ -212,18 +212,24 @@
       text-decoration: underline;
     }
 
-    .tag-ai {
-      display: inline-flex;
-      align-items: center;
-      font-size: 0.78rem;
-      font-weight: 600;
-      padding: 0.15rem 0.55rem;
-      border-radius: 5px;
-      background-color: var(--ai-soft);
-      color: var(--ai-color);
-    }
+	.tag-ai {
+  　　display: inline-flex;
+  　　align-items: center;
+  　　font-size: 0.76rem;
+  　　font-weight: 600;
+  　　padding: 0.1rem 0.5rem;
+  　　border-radius: 5px;
+  　　background-color: var(--ai-soft);
+  　　color: var(--ai-color);
+  　　margin-left: 0.5rem;
+  　　vertical-align: middle;
+	}
 
-    @media (max-width: 600px) {
+	.legend-item .tag-ai {
+  　　margin-left: 0;
+	}	  
+	  
+	@media (max-width: 600px) {
       h1 {
         font-size: 1.65rem;
       }
