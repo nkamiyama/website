@@ -20,6 +20,8 @@
       --journal-soft: #ecfdf5;
       --conf-color: #b45309;
       --conf-soft: #fffbeb;
+      --ai-color: #6d28d9;
+      --ai-soft: #f5f3ff;
       --border-color: #e2e8f0;
       --shadow: 0 1px 3px 0 rgb(0 0 0 / 0.06), 0 1px 2px -1px rgb(0 0 0 / 0.06);
       --shadow-hover: 0 4px 6px -1px rgb(0 0 0 / 0.08), 0 2px 4px -2px rgb(0 0 0 / 0.06);
@@ -38,6 +40,8 @@
         --journal-soft: rgba(16, 185, 129, 0.15);
         --conf-color: #fbbf24;
         --conf-soft: rgba(245, 158, 11, 0.15);
+        --ai-color: #c4b5fd;
+        --ai-soft: rgba(139, 92, 246, 0.15);
         --border-color: #334155;
         --shadow: 0 1px 3px 0 rgb(0 0 0 / 0.3);
         --shadow-hover: 0 4px 6px -1px rgb(0 0 0 / 0.4);
@@ -218,6 +222,23 @@
       gap: 0.5rem;
     }
 
+    .tag-ai {
+      display: inline-flex;
+      align-items: center;
+      font-size: 0.76rem;
+      font-weight: 600;
+      padding: 0.1rem 0.5rem;
+      border-radius: 5px;
+      background-color: var(--ai-soft);
+      color: var(--ai-color);
+      margin-left: 0.5rem;
+      vertical-align: middle;
+    }
+
+    .legend-item .tag-ai {
+      margin-left: 0;
+    }
+
     @media (max-width: 600px) {
       h1 {
         font-size: 1.65rem;
@@ -264,6 +285,10 @@
           <span class="tag-conf">&#9632; Conference</span>
           <span>Peer-reviewed conference papers (especially, in SODA, AAMAS, AAAI, IJCAI, WSC, LNCS, LIPIcs, CRPIT, CCIS)</span>
         </div>
+        <div class="legend-item">
+          <span class="tag-ai">Generative AI</span>
+          <span>(A part of) the result was obtained by using Generative AI (beyond proofreading)</span>
+        </div>      
       </div>
     </header>
 
