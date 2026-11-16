@@ -170,7 +170,6 @@
       transition: border-color 0.15s ease, box-shadow 0.15s ease;
     }
 
-    /* リンク（.pub-link）を持つカードのみホバー時にハイライト */
     .pub-item:has(.pub-link):hover {
       border-color: var(--accent);
       box-shadow: var(--shadow-hover);
@@ -300,16 +299,11 @@
           <span class="tag-conf">&#9632; Conference</span>
           <span>Peer-reviewed conference papers (especially, in SODA, AAMAS, AAAI, IJCAI, WSC, LNCS, LIPIcs, CRPIT, CCIS)</span>
         </div>
-        <div class="legend-item">
-          <span class="tag-ai">Generative AI</span>
-          <span>The result was obtained by using Generative AI (beyond proofreading)</span>
-        </div>
       </div>
     </header>
 
     <main>
       <ol reversed class="pub-list">
-        <!-- ▼ リンクを付ける場合の書き方（href に出版社のURLを入れてください） -->
         <li class="pub-item">
           <div class="pub-inner">
             <div class="authors">Takehiro Ito, Naonori Kakimura, Naoyuki Kamiyama, Yusuke Kobayashi, Yoshio Okamoto</div>
