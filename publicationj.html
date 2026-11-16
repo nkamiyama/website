@@ -16,6 +16,8 @@
       --accent: #1d4ed8;
       --accent-hover: #1e40af;
       --accent-soft: #eff6ff;
+      --ai-color: #6d28d9;
+      --ai-soft: #f5f3ff;
       --border-color: #e2e8f0;
       --shadow: 0 1px 3px 0 rgb(0 0 0 / 0.06), 0 1px 2px -1px rgb(0 0 0 / 0.06);
       --shadow-hover: 0 4px 6px -1px rgb(0 0 0 / 0.08), 0 2px 4px -2px rgb(0 0 0 / 0.06);
@@ -30,6 +32,8 @@
         --accent: #60a5fa;
         --accent-hover: #93c5fd;
         --accent-soft: rgba(59, 130, 246, 0.15);
+        --ai-color: #c4b5fd;
+        --ai-soft: rgba(139, 92, 246, 0.15);
         --border-color: #334155;
         --shadow: 0 1px 3px 0 rgb(0 0 0 / 0.3);
         --shadow-hover: 0 4px 6px -1px rgb(0 0 0 / 0.4);
@@ -144,13 +148,13 @@
       background-color: var(--card-bg);
       border: 1px solid var(--border-color);
       border-radius: 10px;
-      padding: 1.15rem 1.4rem 1.15rem 3.5rem;
       position: relative;
       box-shadow: var(--shadow);
       transition: border-color 0.15s ease, box-shadow 0.15s ease;
     }
 
-    .pub-item:hover {
+    /* Highlight card on hover only when it has a publisher link */
+    .pub-item:has(.pub-link):hover {
       border-color: var(--accent);
       box-shadow: var(--shadow-hover);
     }
@@ -171,6 +175,19 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      pointer-events: none;
+    }
+
+    .pub-inner,
+    .pub-link {
+      display: block;
+      padding: 1.15rem 1.4rem 1.15rem 3.5rem;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .pub-link:hover .paper-title {
+      color: var(--accent);
     }
 
     .authors {
@@ -185,6 +202,7 @@
       color: var(--text-primary);
       margin-bottom: 0.4rem;
       line-height: 1.5;
+      transition: color 0.15s ease;
     }
 
     .venue {
@@ -192,11 +210,25 @@
       color: var(--text-secondary);
     }
 
+    .tag-ai {
+      display: inline-flex;
+      align-items: center;
+      font-size: 0.76rem;
+      font-weight: 600;
+      padding: 0.1rem 0.5rem;
+      border-radius: 5px;
+      background-color: var(--ai-soft);
+      color: var(--ai-color);
+      margin-left: 0.5rem;
+      vertical-align: middle;
+    }
+
     @media (max-width: 600px) {
       h1 {
         font-size: 1.65rem;
       }
-      .pub-item {
+      .pub-inner,
+      .pub-link {
         padding: 1rem 1rem 1rem 3rem;
       }
       .pub-item::before {
@@ -234,53 +266,65 @@
     </header>
 
     <main>
-      <!-- 査読付き論文 -->
+      <!-- Peer-Reviewed Journal Papers -->
       <section class="category-section">
         <h2>査読付き論文</h2>
         <ol reversed class="pub-list" style="counter-reset: pub-counter 2;">
           <li class="pub-item">
-            <div class="authors">神山 直之, 瀧澤 重志, 加藤 直樹</div>
-            <div class="paper-title">フロアプランの列挙に基づく2階建て住宅の室配置アルゴリズム</div>
-            <div class="venue">日本建築学会環境系論文集, 601:66-72, 2006.</div>
+            <a href="https://doi.org/10.3130/aije.71.65_1" class="pub-link">
+              <div class="authors">神山 直之, 瀧澤 重志, 加藤 直樹</div>
+              <div class="paper-title">フロアプランの列挙に基づく2階建て住宅の室配置アルゴリズム</div>
+              <div class="venue">日本建築学会環境系論文集, 601:66-72, 2006.</div>
+            </a>
           </li>
         </ol>
       </section>
 
-      <!-- 書籍の分担執筆 -->
+      <!-- Book Chapters -->
       <section class="category-section">
         <h2>書籍の分担執筆</h2>
         <ol reversed class="pub-list" style="counter-reset: pub-counter 2;">
           <li class="pub-item">
-            <div class="authors">神山 直之</div>
-            <div class="paper-title">ネットワークアルゴリズム</div>
-            <div class="venue">理論計算機科学事典, 90-104, 2022.</div>
+            <div class="pub-inner">
+              <div class="authors">神山 直之</div>
+              <div class="paper-title">ネットワークアルゴリズム</div>
+              <div class="venue">理論計算機科学事典, 90-104, 2022.</div>
+            </div>
           </li>
         </ol>
       </section>
 
-      <!-- 数学セミナー・数理科学の記事 -->
+      <!-- Magazine Articles -->
       <section class="category-section">
         <h2>数学セミナー・数理科学の記事</h2>
         <ol reversed class="pub-list" style="counter-reset: pub-counter 5;">
           <li class="pub-item">
-            <div class="authors">神山 直之</div>
-            <div class="paper-title">組合せ最適化</div>
-            <div class="venue">数理科学, 702:37-44, 2021．</div>
+            <div class="pub-inner">
+              <div class="authors">神山 直之</div>
+              <div class="paper-title">組合せ最適化</div>
+              <div class="venue">数理科学, 702:37-44, 2021．</div>
+            </div>
           </li>
           <li class="pub-item">
-            <div class="authors">神山 直之</div>
-            <div class="paper-title">離散最適化の理論と応用（３）劣モジュラ関数と避難計画問題</div>
-            <div class="venue">数学セミナー, 57(4):62-65, 2018．</div>
+            <div class="pub-inner">
+              <div class="authors">神山 直之</div>
+              <div class="paper-title">離散最適化の理論と応用（３）劣モジュラ関数と避難計画問題</div>
+              <div class="venue">数学セミナー, 57(4):62-65, 2018．</div>
+            </div>
           </li>
           <li class="pub-item">
-            <div class="authors">神山 直之</div>
-            <div class="paper-title">離散最適化の理論と応用（２）マトロイドとマッチング問題</div>
-            <div class="venue">数学セミナー, 57(3):60-63, 2018．</div>
+            <div class="pub-inner">
+              <div class="authors">神山 直之</div>
+              <div class="paper-title">離散最適化の理論と応用（２）マトロイドとマッチング問題</div>
+              <div class="venue">数学セミナー, 57(3):60-63, 2018．</div>
+            </div>
           </li>
           <li class="pub-item">
-            <div class="authors">神山 直之</div>
-            <div class="paper-title">離散最適化の理論と応用（１）離散最適化とマトロイド・劣モジュラ関数</div>
-            <div class="venue">数学セミナー, 57(2):54-57, 2018．</div>
+            <div class="pub-inner">
+              <div class="authors">神山 直之</div>
+              <div class="paper-title">離散最適化の理論と応用（１）離散最適化とマトロイド・劣モジュラ関数</div>
+              <div class="venue">数学セミナー, 57(2):54-57, 2018．</div>
+            </div>
           </li>
         </ol>
       </section>
